@@ -5,7 +5,7 @@ import Footer from '@/components/Footer'
 
 export const metadata: Metadata = {
   title: '72DEV-BTP SARL - Construction Excellence in Africa',
-  description: 'Leading construction company across African nations. Road, bridge, and building construction with eco-friendly practices and turnkey delivery.',
+  description: 'Leading construction company across African nations specializing in road, bridge, and building construction.',
 }
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {
