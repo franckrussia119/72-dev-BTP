@@ -22,8 +22,8 @@ const projects = [
   { img: IMG.building, cat: 'Building', name: 'Commercial Complex — Douala', tall: true },
   { img: IMG.road, cat: 'Infrastructure', name: 'Highway Project' },
   { img: IMG.bridge, cat: 'Bridge', name: 'River Crossing' },
-  { img: IMG.cityscape, cat: 'Urban', name: 'City Development' },
-  { img: IMG.designQuality, cat: 'Residential', name: 'Villa Estate' },
+  { img: IMG.highrise, cat: 'Urban', name: 'City Development' },
+  { img: IMG.villa, cat: 'Residential', name: 'Villa Estate' },
 ]
 
 const process = [
@@ -53,7 +53,7 @@ const testimonials = [
   },
 ]
 
-const partners = [IMG.partner1, IMG.partner2, IMG.partner3, IMG.partner4]
+const partners = ['Ministry of Public Works', 'Douala Urban Council', 'CIMENCAM', 'BuildAfrica Group']
 
 export default function Home() {
   return (
@@ -215,8 +215,7 @@ export default function Home() {
         <div className="s-title" style={{ fontSize: 28, marginBottom: 40 }}>Our Partners</div>
         <div className="partners">
           {partners.map((p, i) => (
-            // eslint-disable-next-line @next/next/no-img-element
-            <img src={p} alt={`Partner ${i + 1}`} key={i} loading="lazy" />
+            <span className="partner-name" key={i}>{p}</span>
           ))}
         </div>
       </section>

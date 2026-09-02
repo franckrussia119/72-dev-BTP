@@ -1,30 +1,35 @@
-// Central image manifest — all real assets hosted on 72dev-btp.com.
-// Kept in one module so URLs are easy to swap/self-host later.
-const B = 'https://72dev-btp.com/wp-content/uploads'
+// Central image manifest — all assets self-hosted under /public/images.
+// Kept in one module so image roles are easy to swap.
+const B = '/images'
 
 export const IMG = {
-  logo: B + '/2023/12/Screenshot_2025-02-18_210446-removebg-preview.png',
-
   // Hero slides
-  slide1Bg: B + '/2025/02/pexels-josegalant-14192787-1-scaled.jpg',
-  slide1Card: B + '/2020/09/image-13-1024x683.jpg',
-  slide2Bg: B + '/2025/02/pexels-glazun0v-5215270-1024x683.jpg',
-  slide2Card: B + '/2025/02/Highway_Construction.avif',
-  slide3Bg: B + '/2024/08/AdobeStock_787268873-scaled-1-592x444.jpg',
-  slide3Card: B + '/2025/02/Incremental-Launching-Method-of-Bridge-Construction.webp',
+  slide1Bg: B + '/pexels-borishamer-13599821.jpg',
+  slide1Card: B + '/pexels-jonathanborba-9976121.jpg',
+  slide2Bg: B + '/pexels-tomfisk-3820874.jpg',
+  slide2Card: B + '/pexels-tom-shamberger-5308978-19550925.jpg',
+  slide3Bg: B + '/pexels-adamstuartclark-33703700.jpg',
+  slide3Card: B + '/pexels-rd-270521240-34473546.jpg',
 
   // Feature / general
-  road: B + '/2025/02/Highway_Construction.avif',
-  bridge: B + '/2025/02/Incremental-Launching-Method-of-Bridge-Construction.webp',
-  building: B + '/2025/02/pexels-josegalant-14192787-1-scaled.jpg',
-  designQuality: B + '/2020/09/image-13-1024x683.jpg',
-  site: B + '/2024/07/AdobeStock_755564704-scaled-1-592x444.jpg',
-  cityscape: B + '/2024/08/AdobeStock_787268873-scaled-1-592x444.jpg',
-  infra: B + '/2025/02/pexels-glazun0v-5215270-1024x683.jpg',
+  road: B + '/pexels-robertkso-12274279.jpg',
+  bridge: B + '/pexels-celalkeser-38404470.jpg',
+  building: B + '/pexels-the-ghazi-2152398165-33747711.jpg',
+  designQuality: B + '/pexels-andrew-levytskyi-84228-15827510.jpg',
+  site: B + '/pexels-enginakyurt-4170185.jpg',
+  cityscape: B + '/pexels-anderson-wei-2151965849-34808352.jpg',
+  infra: B + '/pexels-construccion-total-2464540-6070743.jpg',
 
-  // Partners
-  partner1: B + '/2020/09/partner-02-e1582734691936.jpg',
-  partner2: B + '/2020/09/partner-01-e1582734705113.jpg',
-  partner3: B + '/2020/09/partner-03-e1582734671936.jpg',
-  partner4: B + '/2020/09/partner-05-e1582734603812.jpg',
+  // Extra variety (portfolio / galleries)
+  villa: B + '/pexels-perqued-13203194.jpg',
+  villa2: B + '/pexels-the-ghazi-2152398165-32570640.jpg',
+  house: B + '/pexels-netoo-30484316.jpg',
+  highrise: B + '/pexels-lukas-kosc-525097851-33762933.jpg',
+  urban: B + '/pexels-quang-nguyen-vinh-222549-12740147.jpg',
+  roadwork: B + '/pexels-soft__work__-1913651507-31674013.jpg',
+  roadmachine: B + '/pexels-kadocreative-206546712-11685816.jpg',
+  roller: B + '/pexels-gaion-5669019.jpg',
+  bridge2: B + '/pexels-celalkeser-38411460.jpg',
+  concrete: B + '/pexels-betongsmcsg-32690815.jpg',
+  design2: B + '/pexels-marywhitneyph-238211.jpg',
 }

@@ -352,6 +352,8 @@ img { max-width: 100%; }
 .partners { display: flex; align-items: center; justify-content: center; gap: 64px; flex-wrap: wrap; }
 .partners img { height: 46px; width: auto; object-fit: contain; filter: grayscale(100%) brightness(1.6); opacity: 0.5; transition: all 0.3s ease; }
 .partners img:hover { filter: grayscale(0); opacity: 1; }
+.partner-name { font-size: 15px; font-weight: 600; letter-spacing: 0.06em; text-transform: uppercase; color: rgba(255,255,255,0.42); transition: color 0.3s ease; white-space: nowrap; }
+.partner-name:hover { color: var(--accent); }
 
 /* ═══════════════ FOOTER ═══════════════ */
 .footer { background: #050c18; padding: 88px 6% 44px; }

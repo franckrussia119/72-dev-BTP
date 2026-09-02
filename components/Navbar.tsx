@@ -3,8 +3,6 @@ import { useState, useEffect } from 'react'
 import Link from 'next/link'
 import { usePathname } from 'next/navigation'
 
-const LOGO = 'https://72dev-btp.com/wp-content/uploads/2023/12/Screenshot_2025-02-18_210446-removebg-preview.png'
-
 const links = [
   { href: '/', label: 'Home' },
   { href: '/about', label: 'About' },
@@ -29,8 +27,7 @@ export default function Navbar() {
   return (
     <nav className="nav" style={{ boxShadow: scrolled ? '0 6px 30px rgba(0,0,0,0.45)' : 'none' }}>
       <Link href="/" className="logo-wrap" aria-label="72dev-BTP home">
-        {/* eslint-disable-next-line @next/next/no-img-element */}
-        <img src={LOGO} alt="72dev-BTP" className="logo-img" />
+        <div className="logo-mark"><span>72</span></div>
         <div>
           <div className="logo-name">72dev-btp</div>
           <div className="logo-sub">Construction &amp; Engineering</div>

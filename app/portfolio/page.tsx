@@ -9,11 +9,11 @@ const projects: { img: string; cat: Exclude<Cat, 'All'>; name: string; wide?: bo
   { img: IMG.building, cat: 'Building', name: 'Commercial Complex — Douala', wide: true },
   { img: IMG.road, cat: 'Road', name: 'National Highway Extension' },
   { img: IMG.bridge, cat: 'Bridge', name: 'Incremental Launch Bridge' },
-  { img: IMG.designQuality, cat: 'Building', name: 'Residential Villa Estate' },
+  { img: IMG.villa, cat: 'Building', name: 'Residential Villa Estate' },
   { img: IMG.infra, cat: 'Infrastructure', name: 'Urban Public Works' },
   { img: IMG.cityscape, cat: 'Infrastructure', name: 'City Development Program', wide: true },
-  { img: IMG.site, cat: 'Building', name: 'Mixed-Use Development' },
-  { img: IMG.road, cat: 'Road', name: 'Rural Road Network' },
+  { img: IMG.highrise, cat: 'Building', name: 'Mixed-Use Development' },
+  { img: IMG.roadwork, cat: 'Road', name: 'Rural Road Network' },
 ]
 
 const tabs: Cat[] = ['All', 'Road', 'Building', 'Bridge', 'Infrastructure']
