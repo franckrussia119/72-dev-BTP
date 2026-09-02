@@ -1,43 +1,76 @@
 'use client'
 import { useState, useEffect } from 'react'
 import Link from 'next/link'
+import { usePathname } from 'next/navigation'
+
+const LOGO = 'https://72dev-btp.com/wp-content/uploads/2023/12/Screenshot_2025-02-18_210446-removebg-preview.png'
+
+const links = [
+  { href: '/', label: 'Home' },
+  { href: '/about', label: 'About' },
+  { href: '/services', label: 'Services' },
+  { href: '/portfolio', label: 'Portfolio' },
+  { href: '/contact', label: 'Contact' },
+]
 
 export default function Navbar() {
   const [open, setOpen] = useState(false)
   const [scrolled, setScrolled] = useState(false)
+  const pathname = usePathname()
+
   useEffect(() => {
     const fn = () => setScrolled(window.scrollY > 10)
     window.addEventListener('scroll', fn)
     return () => window.removeEventListener('scroll', fn)
   }, [])
-  const links = [
-    { href: '/', label: 'Homepage' },
-    { href: '/about', label: 'About Us' },
-    { href: '/services', label: 'Services' },
-    { href: '/portfolio', label: 'Portfolio' },
-    { href: '/contact', label: 'Contact Us' },
-  ]
+
+  useEffect(() => { setOpen(false) }, [pathname])
+
   return (
-    <nav className="navbar" style={{ boxShadow: scrolled ? '0 2px 12px rgba(0,0,0,0.08)' : 'none' }}>
-      <div style={{ maxWidth: '1280px', margin: '0 auto', padding: '0 5%', width: '100%', display: 'flex', alignItems: 'center', justifyContent: 'space-between', position: 'relative' }}>
-        <Link href="/">
-          <img src="https://72dev-btp.com/wp-content/uploads/2023/12/Screenshot_2025-02-18_210446-removebg-preview.png" alt="72DEV-BTP" style={{ height: '42px', width: 'auto' }} />
-        </Link>
-        <div className="desktop-nav" style={{ display: 'flex', alignItems: 'center', gap: '2.5rem', position: 'absolute', left: '50%', transform: 'translateX(-50%)' }}>
-          {links.map(l => <Link key={l.href} href={l.href} className="nav-link">{l.label}</Link>)}
+    <nav className="nav" style={{ boxShadow: scrolled ? '0 6px 30px rgba(0,0,0,0.45)' : 'none' }}>
+      <Link href="/" className="logo-wrap" aria-label="72dev-BTP home">
+        {/* eslint-disable-next-line @next/next/no-img-element */}
+        <img src={LOGO} alt="72dev-BTP" className="logo-img" />
+        <div>
+          <div className="logo-name">72dev-btp</div>
+          <div className="logo-sub">Construction &amp; Engineering</div>
         </div>
-        <a href="tel:+79502294642" style={{ display: 'flex', alignItems: 'center', gap: '0.5rem', border: '1.5px solid #1a2b4a', padding: '0.45rem 1.1rem', fontFamily: 'Nunito Sans, sans-serif', fontWeight: 700, fontSize: '0.75rem', letterSpacing: '0.1em', textTransform: 'uppercase', color: '#1a2b4a', transition: 'all 0.2s' }} className="desktop-nav">
-          📞 Call Us
-        </a>
-        <button className="mobile-toggle" onClick={() => setOpen(!open)} style={{ display: 'none', background: 'none', border: 'none', cursor: 'pointer', padding: '8px' }}>
-          <div style={{ width: 22, height: 2, background: '#1a2b4a', marginBottom: 5 }} />
-          <div style={{ width: 22, height: 2, background: '#1a2b4a', marginBottom: 5 }} />
-          <div style={{ width: 22, height: 2, background: '#1a2b4a' }} />
-        </button>
+      </Link>
+
+      <div className="nav-links">
+        {links.map((l) => (
+          <Link
+            key={l.href}
+            href={l.href}
+            className={'nav-link' + (pathname === l.href ? ' active' : '')}
+          >
+            {l.label}
+          </Link>
+        ))}
       </div>
+
+      <Link href="/contact" className="nav-cta">Get a Quote</Link>
+
+      <button
+        className="mobile-toggle"
+        aria-label="Toggle menu"
+        onClick={() => setOpen((v) => !v)}
+      >
+        <span /><span /><span />
+      </button>
+
       {open && (
-        <div style={{ background: 'white', borderTop: '1px solid #eee', padding: '1rem 5%' }}>
-          {links.map(l => <Link key={l.href} href={l.href} className="nav-link" onClick={() => setOpen(false)} style={{ display: 'block', padding: '0.65rem 0', borderBottom: '1px solid #f0f0f0' }}>{l.label}</Link>)}
+        <div className="mobile-menu">
+          {links.map((l) => (
+            <Link
+              key={l.href}
+              href={l.href}
+              className={'nav-link' + (pathname === l.href ? ' active' : '')}
+            >
+              {l.label}
+            </Link>
+          ))}
+          <Link href="/contact" className="nav-cta" style={{ textAlign: 'center' }}>Get a Quote</Link>
         </div>
       )}
     </nav>

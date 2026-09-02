@@ -1,118 +1,161 @@
 import Link from 'next/link'
 import type { Metadata } from 'next'
+import { IMG } from '@/lib/images'
 
-export const metadata: Metadata = { title: 'Services - 72DEV-BTP SARL' }
+export const metadata: Metadata = {
+  title: 'Services',
+  description: 'Road, bridge and building construction plus large-scale infrastructure development — turnkey delivery across Cameroon and West Africa.',
+}
+
+const iconGrid = [
+  { label: 'Project Design', icon: 'ti-bulb' },
+  { label: 'Development', icon: 'ti-building-skyscraper' },
+  { label: 'Contractor Services', icon: 'ti-clipboard-list' },
+  { label: 'Interior Painting', icon: 'ti-paint' },
+  { label: 'Electrical', icon: 'ti-bolt' },
+  { label: 'Plumbing', icon: 'ti-droplet' },
+  { label: 'Carpentry', icon: 'ti-tool' },
+  { label: 'Flooring', icon: 'ti-layout-grid' },
+  { label: 'Renovations', icon: 'ti-hammer' },
+]
+
+const details = [
+  {
+    label: 'Design', title: 'Road Construction', img: IMG.road,
+    desc: 'We build and maintain durable roads that connect communities and boost trade across Africa. From highways to rural paths, our projects use weather-resistant materials.',
+    list: ['Enhanced mobility for businesses and residents', 'Sustainable techniques that minimize erosion', 'Turnkey service including surveying, paving and signage'],
+  },
+  {
+    label: 'Engineering', title: 'Bridge Construction', img: IMG.bridge,
+    desc: 'Specializing in safe, efficient bridges that span rivers, valleys and urban divides. Our awarded engineers ensure structures built to last.',
+    list: ['Improved trade routes and emergency access', 'Eco-friendly designs that blend with landscapes', 'Full certification for safety and load-bearing standards'],
+  },
+  {
+    label: 'Production', title: 'Building Construction', img: IMG.building,
+    desc: 'From residential homes to commercial complexes, we construct modern buildings with a focus on quality, comfort and sustainability.',
+    list: ['High-end finishes that withstand heat and humidity', 'Energy-efficient features that reduce long-term costs', 'Turnkey management for hassle-free completion'],
+  },
+  {
+    label: 'Delivery', title: 'Infrastructure Development', img: IMG.infra,
+    desc: 'Comprehensive services for large-scale infrastructure like water systems, power grids and public works — from feasibility to implementation.',
+    list: ['Scalable solutions for government and private sectors', 'Local sourcing to support African economies', 'Certified processes for reliability and compliance'],
+  },
+]
 
 export default function Services() {
-  const serviceList = [
-    { label: 'Design', title: 'Road Construction', img: 'https://72dev-btp.com/wp-content/uploads/2025/02/Highway_Construction.avif', desc: 'We build and maintain durable roads that connect communities and boost trade across Africa. From highways to rural paths, our projects use weather-resistant materials.', benefits: ['Enhanced mobility for businesses and residents.', 'Sustainable techniques that minimize erosion.', 'Turnkey service including surveying, paving, and signage.'], left: true },
-    { label: 'Design', title: 'Bridge Construction', img: 'https://72dev-btp.com/wp-content/uploads/2025/02/Incremental-Launching-Method-of-Bridge-Construction.webp', desc: 'Specializing in safe, efficient bridges that span rivers, valleys, and urban divides. Our awarded engineers ensure structures built to last.', benefits: ['Improved trade routes and emergency access.', 'Eco-friendly designs that blend with natural landscapes.', 'Full certification for safety and load-bearing standards.'], left: false },
-    { label: 'Production', title: 'Building Construction', img: 'https://72dev-btp.com/wp-content/uploads/2025/02/pexels-josegalant-14192787-1-scaled.jpg', desc: 'From residential homes to commercial complexes, we construct modern buildings with a focus on quality and sustainability.', benefits: ['High-end finishes that withstand heat, humidity, and wear.', 'Energy-efficient features to reduce long-term costs.', 'Turnkey management for hassle-free completion.'], left: true },
-    { label: 'Delivery', title: 'Infrastructure Development', img: 'https://72dev-btp.com/wp-content/uploads/2025/02/Highway_Construction.avif', desc: 'Comprehensive services for large-scale infrastructure like water systems, power grids, and public works from feasibility to implementation.', benefits: ['Scalable solutions for government and private sectors.', 'Local sourcing to support African economies.', 'Certified processes for reliability and compliance.'], left: false },
-  ]
-
   return (
     <>
       <div className="page-header">
-        <div className="page-header-bg" style={{ backgroundImage: 'url(https://72dev-btp.com/wp-content/uploads/2025/02/Highway_Construction.avif)' }} />
+        <div className="page-header-bg" style={{ backgroundImage: `url(${IMG.road})` }} />
         <div className="page-header-overlay" />
         <div className="page-header-content">
           <div className="teal-bar" />
           <div>
-            <h1 style={{ fontFamily: 'Nunito Sans, sans-serif', fontSize: 'clamp(1.8rem, 3vw, 2.5rem)', fontWeight: 800, color: 'white', marginBottom: '0.5rem' }}>Services</h1>
-            <p style={{ color: 'rgba(255,255,255,0.6)', fontSize: '0.85rem' }}>
-              <Link href="/" style={{ color: '#2BBFBF' }}>Home</Link> / Services
-            </p>
+            <h1 className="ph-title">Services</h1>
+            <div className="breadcrumb"><Link href="/">Home</Link> &nbsp;/&nbsp; Services</div>
           </div>
         </div>
       </div>
 
-      <section style={{ padding: '5rem 5%', background: 'white' }}>
-        <div style={{ maxWidth: '1280px', margin: '0 auto', display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(300px, 1fr))', gap: '4rem', alignItems: 'start' }}>
+      {/* INTRO + ICON GRID */}
+      <section className="section dark">
+        <div className="two-col top">
           <div>
-            <h2 style={{ fontFamily: 'Nunito Sans, sans-serif', fontWeight: 800, fontSize: '1.4rem', color: '#1a2b4a', marginBottom: '1.25rem', lineHeight: 1.4 }}>Our qualified team will take care of every detail of your project</h2>
-            <p style={{ color: '#7a8a9a', lineHeight: 1.8, marginBottom: '1.5rem', fontSize: '0.9rem' }}>
-              As a leading construction company operating between African nations, 72dev-BTP combines global standards with local expertise. We specialize in turnkey delivery, ensuring every service is handled from initial consultation to final handover.
-            </p>
-            <Link href="/contact" className="btn-teal">Talk to an Expert</Link>
+            <div className="s-eyebrow"><div className="s-line" /><span className="s-tag">Full-Service</span></div>
+            <div className="s-title">Every Detail of<br />Your Project, Handled</div>
+            <div className="s-sub">
+              As a leading construction company operating between African nations, 72dev-BTP combines
+              global standards with local expertise. We specialize in turnkey delivery — every service
+              handled from initial consultation to final handover.
+            </div>
+            <Link href="/contact" className="btn-fill">Talk to an Expert</Link>
           </div>
-          <div style={{ display: 'grid', gridTemplateColumns: 'repeat(3, 1fr)', gap: '1.5rem' }}>
-            {['Project Design', 'Development', 'Contractor Services', 'Interior Painting', 'Electrical', 'Plumbing', 'Carpentry', 'Flooring', 'Renovations'].map((item, i) => (
-              <div key={i} style={{ textAlign: 'center' }}>
-                <div style={{ width: 52, height: 52, border: '1.5px solid #2BBFBF', display: 'flex', alignItems: 'center', justifyContent: 'center', margin: '0 auto 0.5rem', fontSize: '1.2rem' }}>
-                  {['💡', '🏗️', '📋', '🎨', '⚡', '🔧', '🪚', '🏠', '🔨'][i]}
-                </div>
-                <p style={{ color: '#1a2b4a', fontFamily: 'Nunito Sans, sans-serif', fontWeight: 700, fontSize: '0.75rem' }}>{item}</p>
+          <div className="icon-grid">
+            {iconGrid.map((g) => (
+              <div className="icon-cell" key={g.label}>
+                <div className="icon-cell-mark"><i className={'ti ' + g.icon} style={{ fontSize: 20 }} /></div>
+                <div className="icon-cell-label">{g.label}</div>
               </div>
             ))}
           </div>
         </div>
       </section>
 
-      {serviceList.map((s, i) => (
-        <section key={i} style={{ padding: '5rem 5%', background: i % 2 === 0 ? '#f4f6f8' : 'white' }}>
-          <div style={{ maxWidth: '1280px', margin: '0 auto', display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(300px, 1fr))', gap: '4rem', alignItems: 'center' }}>
-            {s.left ? (
-              <>
-                <div style={{ position: 'relative', paddingBottom: '2rem', paddingLeft: '2rem' }}>
-                  <div style={{ position: 'absolute', bottom: 0, left: 0, width: '80px', height: '80px', background: 'rgba(43,191,191,0.4)' }} />
-                  <img src={s.img} alt={s.title} style={{ width: '100%', height: '280px', objectFit: 'cover', position: 'relative', zIndex: 1 }} />
-                </div>
-                <div>
-                  <p style={{ color: '#2BBFBF', fontFamily: 'Nunito Sans, sans-serif', fontWeight: 700, fontSize: '0.8rem', letterSpacing: '0.1em', marginBottom: '0.5rem' }}>{s.label}</p>
-                  <h2 style={{ fontFamily: 'Nunito Sans, sans-serif', fontWeight: 800, fontSize: '1.4rem', color: '#1a2b4a', marginBottom: '1rem' }}>{s.title}</h2>
-                  <p style={{ color: '#7a8a9a', lineHeight: 1.8, marginBottom: '1.25rem', fontSize: '0.9rem' }}>{s.desc}</p>
-                  <ul style={{ listStyle: 'disc', paddingLeft: '1.25rem', color: '#7a8a9a', fontSize: '0.88rem', lineHeight: 1.9 }}>
-                    {s.benefits.map((b, bi) => <li key={bi}>{b}</li>)}
-                  </ul>
-                </div>
-              </>
-            ) : (
-              <>
-                <div>
-                  <p style={{ color: '#2BBFBF', fontFamily: 'Nunito Sans, sans-serif', fontWeight: 700, fontSize: '0.8rem', letterSpacing: '0.1em', marginBottom: '0.5rem' }}>{s.label}</p>
-                  <h2 style={{ fontFamily: 'Nunito Sans, sans-serif', fontWeight: 800, fontSize: '1.4rem', color: '#1a2b4a', marginBottom: '1rem' }}>{s.title}</h2>
-                  <p style={{ color: '#7a8a9a', lineHeight: 1.8, marginBottom: '1.25rem', fontSize: '0.9rem' }}>{s.desc}</p>
-                  <ul style={{ listStyle: 'disc', paddingLeft: '1.25rem', color: '#7a8a9a', fontSize: '0.88rem', lineHeight: 1.9 }}>
-                    {s.benefits.map((b, bi) => <li key={bi}>{b}</li>)}
-                  </ul>
-                </div>
-                <div style={{ position: 'relative', paddingBottom: '2rem', paddingRight: '2rem' }}>
-                  <div style={{ position: 'absolute', bottom: 0, right: 0, width: '80px', height: '80px', background: 'rgba(43,191,191,0.4)' }} />
-                  <img src={s.img} alt={s.title} style={{ width: '100%', height: '280px', objectFit: 'cover', position: 'relative', zIndex: 1 }} />
-                </div>
-              </>
-            )}
-          </div>
-        </section>
-      ))}
+      {/* DETAIL ROWS */}
+      <section className="section mid">
+        {details.map((d, i) => {
+          const flip = i % 2 === 1
+          return (
+            <div className={'detail-row' + (flip ? ' rev' : '')} key={d.title}>
+              {flip ? (
+                <>
+                  <div>
+                    <div className="detail-label">{d.label}</div>
+                    <div className="detail-title">{d.title}</div>
+                    <p className="detail-desc">{d.desc}</p>
+                    <ul className="detail-list">
+                      {d.list.map((l) => <li key={l}><span className="dot" />{l}</li>)}
+                    </ul>
+                  </div>
+                  <div className="detail-img right">
+                    <div className="accent-square" />
+                    {/* eslint-disable-next-line @next/next/no-img-element */}
+                    <img src={d.img} alt={d.title} loading="lazy" />
+                  </div>
+                </>
+              ) : (
+                <>
+                  <div className="detail-img">
+                    <div className="accent-square" />
+                    {/* eslint-disable-next-line @next/next/no-img-element */}
+                    <img src={d.img} alt={d.title} loading="lazy" />
+                  </div>
+                  <div>
+                    <div className="detail-label">{d.label}</div>
+                    <div className="detail-title">{d.title}</div>
+                    <p className="detail-desc">{d.desc}</p>
+                    <ul className="detail-list">
+                      {d.list.map((l) => <li key={l}><span className="dot" />{l}</li>)}
+                    </ul>
+                  </div>
+                </>
+              )}
+            </div>
+          )
+        })}
+      </section>
 
-      <section style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(300px, 1fr))', minHeight: '350px' }}>
-        <div style={{ background: '#2d5a5a', display: 'flex', alignItems: 'center', padding: '4rem 5%' }}>
+      {/* WHY OUR SERVICES */}
+      <section className="section dark">
+        <div className="two-col">
           <div>
-            <h2 style={{ fontFamily: 'Nunito Sans, sans-serif', fontWeight: 800, fontSize: 'clamp(1.8rem, 4vw, 2.8rem)', color: 'white', lineHeight: 1.2, marginBottom: '1.5rem' }}>Why Choose Our Services?</h2>
-            <p style={{ color: 'rgba(255,255,255,0.75)', lineHeight: 1.8, fontSize: '0.9rem' }}>
-              With 72dev-BTP, you are not just getting construction services, you are investing in Africa future. Our eco-friendly approach and commitment to excellence ensure projects that deliver real value.
-            </p>
+            <div className="s-eyebrow"><div className="s-line" /><span className="s-tag">The 72dev Difference</span></div>
+            <div className="s-title">Why Choose<br />Our Services?</div>
+            <div className="s-sub">
+              With 72dev-BTP, you are not just getting construction services — you are investing in
+              Africa&apos;s future. Our eco-friendly approach and commitment to excellence ensure projects
+              that deliver real, lasting value.
+            </div>
+            <Link href="/contact" className="btn-fill">Get Started</Link>
+          </div>
+          <div className="img-wrap">
+            {/* eslint-disable-next-line @next/next/no-img-element */}
+            <img src={IMG.infra} alt="Why choose our services" loading="lazy" />
           </div>
         </div>
-        <div>
-          <img src="https://72dev-btp.com/wp-content/uploads/2025/02/pexels-glazun0v-5215270-1024x683.jpg" alt="Why us" style={{ width: '100%', height: '100%', objectFit: 'cover', display: 'block', minHeight: '280px' }} />
+      </section>
+
+      {/* CTA */}
+      <div className="cta-wrap">
+        <div className="cta">
+          <h2>Ready to <span>Get Started?</span></h2>
+          <p>Fill out our form for a personalized service plan built around your project.</p>
+          <div className="cta-btns">
+            <Link href="/contact" className="cta-btn-fill">Contact Us Now</Link>
+            <Link href="/portfolio" className="cta-btn-outline">See Our Work</Link>
+          </div>
         </div>
-      </section>
-
-      <section style={{ background: '#f4f6f8', padding: '6rem 5%', textAlign: 'center' }}>
-        <h2 style={{ fontFamily: 'Nunito Sans, sans-serif', fontWeight: 800, fontSize: 'clamp(1.8rem, 4vw, 3rem)', color: '#1a2b4a', lineHeight: 1.2, marginBottom: '3rem' }}>Ready to Get Started? Fill Out Our Form for a Personalized Service Plan!</h2>
-        <Link href="/contact" className="btn-teal">Contact Us Now</Link>
-      </section>
-
-      <section style={{ background: '#1e3a4a', padding: '5rem 5%', textAlign: 'center' }}>
-        <h2 style={{ fontFamily: 'Nunito Sans, sans-serif', color: 'white', fontSize: '1.8rem', fontWeight: 800, marginBottom: '0.5rem' }}>
-          Would you like to <span style={{ color: '#2BBFBF' }}>speak to an expert?</span>
-        </h2>
-        <p style={{ color: 'rgba(255,255,255,0.6)', marginBottom: '2rem' }}>Our certified team is ready to help with your project across Africa.</p>
-        <Link href="/contact" className="btn-teal">Request a consultation</Link>
-      </section>
+      </div>
     </>
   )
 }

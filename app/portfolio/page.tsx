@@ -1,84 +1,87 @@
+'use client'
+import { useState } from 'react'
 import Link from 'next/link'
-import type { Metadata } from 'next'
+import { IMG } from '@/lib/images'
 
-export const metadata: Metadata = { title: 'Portfolio - 72DEV-BTP SARL' }
+type Cat = 'All' | 'Road' | 'Building' | 'Bridge' | 'Infrastructure'
+
+const projects: { img: string; cat: Exclude<Cat, 'All'>; name: string; wide?: boolean }[] = [
+  { img: IMG.building, cat: 'Building', name: 'Commercial Complex — Douala', wide: true },
+  { img: IMG.road, cat: 'Road', name: 'National Highway Extension' },
+  { img: IMG.bridge, cat: 'Bridge', name: 'Incremental Launch Bridge' },
+  { img: IMG.designQuality, cat: 'Building', name: 'Residential Villa Estate' },
+  { img: IMG.infra, cat: 'Infrastructure', name: 'Urban Public Works' },
+  { img: IMG.cityscape, cat: 'Infrastructure', name: 'City Development Program', wide: true },
+  { img: IMG.site, cat: 'Building', name: 'Mixed-Use Development' },
+  { img: IMG.road, cat: 'Road', name: 'Rural Road Network' },
+]
+
+const tabs: Cat[] = ['All', 'Road', 'Building', 'Bridge', 'Infrastructure']
 
 export default function Portfolio() {
-  const projects = [
-    'https://72dev-btp.com/wp-content/uploads/2020/09/image-13-1024x683.jpg',
-    'https://72dev-btp.com/wp-content/uploads/2025/02/pexels-josegalant-14192787-1-scaled.jpg',
-    'https://72dev-btp.com/wp-content/uploads/2025/02/Highway_Construction.avif',
-    'https://72dev-btp.com/wp-content/uploads/2024/07/AdobeStock_755564704-scaled-1-592x444.jpg',
-    'https://72dev-btp.com/wp-content/uploads/2024/08/AdobeStock_787268873-scaled-1-592x444.jpg',
-  ]
-  const roadProjects = [
-    'https://72dev-btp.com/wp-content/uploads/2025/02/Highway_Construction.avif',
-    'https://72dev-btp.com/wp-content/uploads/2025/02/Incremental-Launching-Method-of-Bridge-Construction.webp',
-    'https://72dev-btp.com/wp-content/uploads/2025/02/pexels-glazun0v-5215270-1024x683.jpg',
-  ]
+  const [filter, setFilter] = useState<Cat>('All')
+  const shown = filter === 'All' ? projects : projects.filter((p) => p.cat === filter)
 
   return (
     <>
       <div className="page-header">
-        <div className="page-header-bg" style={{ backgroundImage: 'url(https://72dev-btp.com/wp-content/uploads/2024/07/AdobeStock_755564704-scaled-1-592x444.jpg)' }} />
+        <div className="page-header-bg" style={{ backgroundImage: `url(${IMG.site})` }} />
         <div className="page-header-overlay" />
         <div className="page-header-content">
           <div className="teal-bar" />
           <div>
-            <h1 style={{ fontFamily: 'Nunito Sans, sans-serif', fontSize: 'clamp(1.8rem, 3vw, 2.5rem)', fontWeight: 800, color: 'white', marginBottom: '0.5rem' }}>Portfolio</h1>
-            <p style={{ color: 'rgba(255,255,255,0.6)', fontSize: '0.85rem' }}>
-              <Link href="/" style={{ color: '#2BBFBF' }}>Home</Link> / Portfolio
-            </p>
+            <h1 className="ph-title">Portfolio</h1>
+            <div className="breadcrumb"><Link href="/">Home</Link> &nbsp;/&nbsp; Portfolio</div>
           </div>
         </div>
       </div>
 
-      <section style={{ padding: '5rem 5%', background: 'white' }}>
-        <div style={{ maxWidth: '1280px', margin: '0 auto', display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(280px, 1fr))', gap: '4rem', alignItems: 'start' }}>
-          <div>
-            <h2 style={{ fontFamily: 'Nunito Sans, sans-serif', fontWeight: 800, fontSize: '1.5rem', color: '#1a2b4a', marginBottom: '1rem', lineHeight: 1.3 }}>Exterior design projects</h2>
-            <p style={{ color: '#7a8a9a', lineHeight: 1.8, fontSize: '0.9rem' }}>
-              Good in transforming outdoor spaces with innovative, sustainable design. Our team creates functional, beautiful environments tailored to client needs, using eco-friendly practices for lasting impact.
-            </p>
-          </div>
-          <div>
-            <div style={{ display: 'grid', gridTemplateColumns: 'repeat(3, 1fr)', gap: '8px', marginBottom: '8px' }}>
-              {projects.slice(0, 3).map((src, i) => (
-                <img key={i} src={src} alt={'Project ' + (i + 1)} style={{ width: '100%', height: '140px', objectFit: 'cover' }} />
-              ))}
+      <section className="section dark">
+        <div className="s-eyebrow"><div className="s-line" /><span className="s-tag">Selected Work</span></div>
+        <div className="s-title">Projects Across Africa</div>
+        <div className="s-sub">
+          Building durable connections across African nations — highways, bridges, buildings and
+          large-scale infrastructure engineered for Africa&apos;s unique terrain and climate.
+        </div>
+
+        <div className="filter-tabs">
+          {tabs.map((t) => (
+            <button
+              key={t}
+              className={'filter-tab' + (filter === t ? ' active' : '')}
+              onClick={() => setFilter(t)}
+            >
+              {t}
+            </button>
+          ))}
+        </div>
+
+        <div className="portfolio-grid">
+          {shown.map((p, i) => (
+            <div className={'pf' + (p.wide ? ' wide' : '')} key={p.name + i}>
+              {/* eslint-disable-next-line @next/next/no-img-element */}
+              <img src={p.img} alt={p.name} loading="lazy" />
+              <div className="pf-ov" />
+              <div className="pf-label">
+                <span className="pf-cat">{p.cat}</span>
+                <span className="pf-name">{p.name}</span>
+              </div>
             </div>
-            <div style={{ display: 'grid', gridTemplateColumns: 'repeat(2, 1fr)', gap: '8px' }}>
-              {projects.slice(3).map((src, i) => (
-                <img key={i} src={src} alt={'Project ' + (i + 4)} style={{ width: '100%', height: '140px', objectFit: 'cover' }} />
-              ))}
-            </div>
-          </div>
+          ))}
         </div>
       </section>
 
-      <section style={{ padding: '5rem 5%', background: '#f4f6f8' }}>
-        <div style={{ maxWidth: '1280px', margin: '0 auto', display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(280px, 1fr))', gap: '4rem', alignItems: 'start' }}>
-          <div>
-            <div style={{ display: 'grid', gridTemplateColumns: 'repeat(3, 1fr)', gap: '8px' }}>
-              {roadProjects.map((src, i) => (
-                <img key={i} src={src} alt={'Road ' + (i + 1)} style={{ width: '100%', height: '140px', objectFit: 'cover' }} />
-              ))}
-            </div>
-          </div>
-          <div>
-            <h2 style={{ fontFamily: 'Nunito Sans, sans-serif', fontWeight: 800, fontSize: '1.5rem', color: '#1a2b4a', marginBottom: '1rem', lineHeight: 1.3 }}>Road and Infrastructure projects</h2>
-            <p style={{ color: '#7a8a9a', lineHeight: 1.8, fontSize: '0.9rem' }}>
-              Building durable connections across African nations. Our road and infrastructure projects span highways, rural paths, and major bridges engineered for Africa unique terrain and climate.
-            </p>
+      {/* CTA */}
+      <div className="cta-wrap">
+        <div className="cta">
+          <h2>Have a <span>Project in Mind?</span></h2>
+          <p>Let our award-winning team bring your vision to life, on time and on budget.</p>
+          <div className="cta-btns">
+            <Link href="/contact" className="cta-btn-fill">Start Your Project</Link>
+            <Link href="/services" className="cta-btn-outline">Our Services</Link>
           </div>
         </div>
-      </section>
-
-      <section style={{ background: '#1e3a4a', padding: '5rem 5%', textAlign: 'center' }}>
-        <h2 style={{ fontFamily: 'Nunito Sans, sans-serif', color: 'white', fontSize: '1.8rem', fontWeight: 800, marginBottom: '1rem' }}>Have a Project in Mind?</h2>
-        <p style={{ color: 'rgba(255,255,255,0.6)', marginBottom: '2rem' }}>Let our award-winning team bring your vision to life.</p>
-        <Link href="/contact" className="btn-teal">Start Your Project</Link>
-      </section>
+      </div>
     </>
   )
 }
